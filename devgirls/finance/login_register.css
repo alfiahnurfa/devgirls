@@ -1,0 +1,66 @@
+      .auth-layout {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        text-align: center;
+      }
+      .auth-layout .card {
+          max-width: 400px;
+          width: 100%;
+          margin-top: 0;
+          text-align: left;
+      }
+      .auth-header {
+          margin-bottom: 24px;
+      }
+      .auth-header .brand-title {
+          color: var(--primary);
+          font-size: 28px;
+          font-weight: 700;
+          letter-spacing: -0.01em;
+      }
+      .auth-header .brand-subtitle {
+          margin-top: 4px;
+          color: var(--muted);
+          font-size: 14px;
+      }
+      .link-text {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 13px;
+      }
+      .link-text a {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      /* Copying essential utility styles for completeness (from existing style blocks) */
+      .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .gap { gap: 12px; }
+      .row-between { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .stack { display: grid; }
+      /* Components style override for input/button padding in auth form */
+      .btn {
+          width: 100%;
+      }
+      .radio {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 13px;
+      }
+      .radio input {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--primary);
+      }
+
+      /* Desktop-first, but small safeguard for narrower screens */
+      @media (max-width: 1100px) {
+        .auth-layout {
+            padding: 16px;
+        }
+      }
