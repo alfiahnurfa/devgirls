@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KampusBudget — Login</title>
+    <meta name="description" content="Masuk ke akun KampusBudget Anda." />
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+      /* =========================================
+         KampusBudget — Stylesheet (Common variables and utilities)
+         ========================================= */
+
+      :root {
+        --bg: #f8fafc; /* slate-50 */
+        --surface: #ffffff; /* white */
+        --border: #e2e8f0; /* slate-200 */
+        --text: #0f172a; /* slate-900 */
+        --muted: #64748b; /* slate-500/600 */
+        --primary: #0f766e; /* teal-700 */
+        --primary-strong: #115e59; /* teal-800 */
+        --accent: #f59e0b; /* amber-500 */
+        --accent-strong: #b45309; /* amber-700 */
+        --radius: 12px;
+        --radius-sm: 10px;
+        --shadow: 0 1px 2px rgba(2, 6, 23, 0.04), 0 8px 24px rgba(2, 6, 23, 0.06);
+        --shadow-soft: 0 1px 1px rgba(2, 6, 23, 0.04), 0 4px 12px rgba(2, 6, 23, 0.06);
+
+        --space-1: 4px;
+        --space-2: 8px;
+        --space-3: 12px;
+        --space-4: 16px;
+        --space-5: 20px;
+        --space-6: 24px;
+        --space-7: 28px;
+        --space-8: 32px;
+      }
+      
+      /* --- Auth Page Layout --- */
+      .auth-layout {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        text-align: center;
+      }
+      .auth-layout .card {
+          max-width: 400px;
+          width: 100%;
+          margin-top: 0;
+          text-align: left;
+      }
+      .auth-header {
+          margin-bottom: 24px;
+      }
+      .auth-header .brand-title {
+          color: var(--primary);
+          font-size: 28px;
+          font-weight: 700;
+          letter-spacing: -0.01em;
+      }
+      .auth-header .brand-subtitle {
+          margin-top: 4px;
+          color: var(--muted);
+          font-size: 14px;
+      }
+      .link-text {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 13px;
+      }
+      .link-text a {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      /* Copying essential utility styles for completeness (from existing style blocks) */
+      .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .gap { gap: 12px; }
+      .row-between { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .stack { display: grid; }
+      /* Components style override for input/button padding in auth form */
+      .btn {
+          width: 100%;
+      }
+      .radio {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 13px;
+      }
+      .radio input {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--primary);
+      }
+
+      /* Desktop-first, but small safeguard for narrower screens */
+      @media (max-width: 1100px) {
+        .auth-layout {
+            padding: 16px;
+        }
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="auth-layout">
+        <header class="auth-header" role="banner">
+            <div class="brand-title">KampusBudget</div>
+            <p class="brand-subtitle">Kelola keuangan kuliah dengan mudah</p>
+        </header>
+
+        <div class="card">
+            <h2 class="h2">Masuk ke Akun</h2>
+            <form class="stack gap">
+              <div class="form-field">
+                <label for="email" class="label">Email</label>
+                <input id="email" type="email" class="input" placeholder="email@kampus.ac.id" required />
+              </div>
+
+              <div class="form-field">
+                <label for="password" class="label">Password</label>
+                <input id="password" type="password" class="input" placeholder="Masukkan password" required />
+              </div>
+
+              <div class="row-between" style="margin-top: 8px;">
+                <label class="radio">
+                    <input type="checkbox" />
+                    <span>Ingat saya</span>
+                </label>
+                <a href="#" class="muted" style="font-size: 13px;">Lupa Password?</a>
+              </div>
+
+              <div class="form-field form-submit" style="margin-top: 16px;">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </form>
+        </div>
+
+        <p class="link-text">
+            Belum punya akun? <a href="register.html">Daftar sekarang</a>
+        </p>
+
+        <footer class="footer" style="padding: 20px 0 0; text-align: center;">© 2025 KampusBudget.</footer>
+    </div>
+  </body>
+</html>
