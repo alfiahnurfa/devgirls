@@ -26,18 +26,27 @@
               
               <div class="form-field">
                 <label for="email" class="label">Email</label>
-                <input id="email" type="email" class="input" placeholder="email@kampus.ac.id" required />
+                <input id="email" type="email" class="input" placeholder="nama@kampus.ac.id" required />
+                <small id="email-error" class="error-message" style="color: red; display: none;">
+                  Gunakan email dengan domain kampus atau sekolah.
+                </small>
               </div>
 
-              <div class="grid-2 gap">
+              <div class="stack gap">
                 <div class="form-field">
                   <label for="password" class="label">Password</label>
-                  <input id="password" type="password" class="input" placeholder="Buat password" required />
+                  <input id="password" type="password" class="input" placeholder="Minimal 8 karakter" pattern="^.{8,}$" required/>
+                  <small id="password-error" class="error-message" style="color: red; display: none;">
+                    Password harus minimal 8 karakter.
+                  </small>
                 </div>
 
                 <div class="form-field">
                   <label for="confirm-password" class="label">Konfirmasi Password</label>
-                  <input id="confirm-password" type="password" class="input" placeholder="Ulangi password" required />
+                  <input id="confirm-password" type="password" class="input" placeholder="Ulangi password" pattern="^.{8,}$" required />
+                  <small id="confirm-password-error" class="error-message" style="color: red; display: none;">
+                    Password tidak sesuai atau kurang dari 8 karakter.
+                  </small>
                 </div>
               </div>
 
@@ -60,5 +69,51 @@
 
         <footer class="footer" style="padding: 20px 0 0; text-align: center;">© 2025 KampusBudget.</footer>
     </div>
-  </body>
-</html>
+
+    <script>
+      //email
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('email-error');
+
+      emailInput.addEventListener('input', () => {
+        const emailValue = emailInput.value;
+        const isGmail = emailValue.endsWith('@gmail.com');
+        const isValidDomain = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailValue) && !isGmail;
+
+        if (!isValidDomain) {
+          emailInput.style.borderColor = 'red';
+          emailError.style.display = 'block';
+        } else {
+          emailInput.style.borderColor = '';
+          emailError.style.display = 'none';
+        }
+      });
+
+      //password
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirm-password');
+      const passwordError = document.getElementById('password-error');
+      const confirmPasswordError = document.getElementById('confirm-password-error');
+      
+    confirmPasswordInput.addEventListener('focus', () => {
+      if (!isPasswordEntered) {
+        confirmPasswordInput.style.borderColor = '';
+        confirmPasswordError.style.display = 'none';
+      }
+    });
+
+    confirmPasswordInput.addEventListener('input', validateConfirmPassword);
+
+    function validateConfirmPassword() {
+      const passwordValue = passwordInput.value;
+      const confirmPasswordValue = confirmPasswordInput.value;
+
+      if (isPasswordEntered && (confirmPasswordValue.length < 8 || confirmPasswordValue !== passwordValue)) {
+        confirmPasswordInput.style.borderColor = 'red';
+        confirmPasswordError.style.display = 'block';
+      } else {
+        confirmPasswordInput.style.borderColor = 'green';
+        confirmPasswordError.style.display = 'none';
+      }
+  }
+    </script>

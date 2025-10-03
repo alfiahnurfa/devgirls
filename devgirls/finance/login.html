@@ -21,7 +21,10 @@
             <form class="stack gap">
               <div class="form-field">
                 <label for="email" class="label">Email</label>
-                <input id="email" type="email" class="input" placeholder="email@kampus.ac.id" required />
+                <input id="email" type="email" class="input" placeholder="nama@kampus.ac.id" required />
+                <small id="email-error" class="error-message" style="color: red; display: none;">
+                  Gunakan email dengan domain kampus atau sekolah.
+                </small>
               </div>
 
               <div class="form-field">
@@ -49,5 +52,24 @@
 
         <footer class="footer" style="padding: 20px 0 0; text-align: center;">© 2025 KampusBudget.</footer>
     </div>
+
+    <script>
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('email-error');
+
+      emailInput.addEventListener('input', () => {
+        const emailValue = emailInput.value;
+        const isGmail = emailValue.endsWith('@gmail.com');
+        const isValidDomain = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailValue) && !isGmail;
+
+        if (!isValidDomain) {
+          emailInput.style.borderColor = 'red';
+          emailError.style.display = 'block';
+        } else {
+          emailInput.style.borderColor = '';
+          emailError.style.display = 'none';
+        }
+      });
+    </script>
   </body>
 </html>

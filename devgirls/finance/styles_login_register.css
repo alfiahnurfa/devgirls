@@ -37,12 +37,10 @@
         font-weight: 600;
       }
 
-      /* Copying essential utility styles for completeness (from existing style blocks) */
       .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
       .gap { gap: 12px; }
       .row-between { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
       .stack { display: grid; }
-      /* Components style override for input/button padding in auth form */
       .btn {
           width: 100%;
       }
@@ -58,9 +56,23 @@
         accent-color: var(--primary);
       }
 
-      /* Desktop-first, but small safeguard for narrower screens */
       @media (max-width: 1100px) {
         .auth-layout {
             padding: 16px;
         }
       }
+
+      .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 10; 
+    }
+
+    .eye-icon {
+      width: 20px;
+      height: 20px;
+      display: block; 
+    }
