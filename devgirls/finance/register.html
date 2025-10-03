@@ -95,6 +95,22 @@
       const passwordError = document.getElementById('password-error');
       const confirmPasswordError = document.getElementById('confirm-password-error');
       
+      let isPasswordEntered = false; 
+      passwordInput.addEventListener('input', () => {
+      const passwordValue = passwordInput.value;
+
+      if (passwordValue.length < 8) {
+        passwordInput.style.borderColor = 'red';
+        passwordError.style.display = 'block';
+      } else {
+        passwordInput.style.borderColor = 'green';
+        passwordError.style.display = 'none';
+      }
+
+      isPasswordEntered = passwordValue.length >= 8;
+    });
+
+    // Validasi Konfirmasi Password
     confirmPasswordInput.addEventListener('focus', () => {
       if (!isPasswordEntered) {
         confirmPasswordInput.style.borderColor = '';

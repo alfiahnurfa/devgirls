@@ -29,8 +29,11 @@
 
               <div class="form-field">
                 <label for="password" class="label">Password</label>
-                <input id="password" type="password" class="input" placeholder="Masukkan password" required />
-              </div>
+                  <input id="password" type="password" class="input" placeholder="Minimal 8 karakter" pattern="^.{8,}$" required/>
+                  <small id="password-error" class="error-message" style="color: red; display: none;">
+                    Password harus minimal 8 karakter.
+                  </small>
+                </div>
 
               <div class="row-between" style="margin-top: 8px;">
                 <label class="radio">
@@ -54,6 +57,7 @@
     </div>
 
     <script>
+      //email
       const emailInput = document.getElementById('email');
       const emailError = document.getElementById('email-error');
 
@@ -70,6 +74,27 @@
           emailError.style.display = 'none';
         }
       });
+
+      //password
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirm-password');
+      const passwordError = document.getElementById('password-error');
+      const confirmPasswordError = document.getElementById('confirm-password-error');
+      
+      let isPasswordEntered = false; 
+      passwordInput.addEventListener('input', () => {
+      const passwordValue = passwordInput.value;
+
+      if (passwordValue.length < 8) {
+        passwordInput.style.borderColor = 'red';
+        passwordError.style.display = 'block';
+      } else {
+        passwordInput.style.borderColor = 'green';
+        passwordError.style.display = 'none';
+      }
+
+      isPasswordEntered = passwordValue.length >= 8;
+    });
     </script>
   </body>
 </html>
